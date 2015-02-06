@@ -730,7 +730,7 @@ class HTTPClient
       if req.header.get('Accept').empty?
         req.header.set('Accept', '*/*')
       end
-      if @transparent_gzip_decompression
+      if @transparent_gzip_decompression && req.header.get('Accept-Encoding').empty?
         req.header.set('Accept-Encoding', 'gzip,deflate')
       end
       if req.header.get('Date').empty?
